@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🎬 Movie Collection Manager</h1>
+
+    <form id="add-movie-form" class="card">
+        <h3>Add New Movie</h3>
+
+        <input type="text" id="title" placeholder="Movie Title" required>
+        <input type="text" id="genre" placeholder="Genre">
+        <input type="number" id="year" placeholder="Release Year" required>
+
+        <button type="submit">Add Movie</button>
+    </form>
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search by title or genre...">
+    </div>
+
+    <div id="movie-list"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
