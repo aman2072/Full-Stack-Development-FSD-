@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+.card button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #0056b3;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.movie-item {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.movie-item h4 {
+    margin: 0;
+}
+
+.movie-item p {
+    margin: 5px 0 0;
+    color: #666;
+}
+
+.actions button {
+    margin-left: 5px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions .edit {
+    background: #28a745;
+    color: white;
+}
+
+.actions .delete {
+    background: #dc3545;
+    color: white;
+}
+
+.actions button:hover {
+    opacity: 0.85;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+}

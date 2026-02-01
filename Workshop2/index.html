@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= HEADER / HERO ================= -->
+<header id="hero">
+
+    <!-- Video Background -->
+    <video autoplay loop muted id="video-background">
+        <source src="Kedarnath1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <span class="logo">My Portfolio</span>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button 
+            id="menu-button"
+            class="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+            ☰
+        </button>
+    </nav>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1>Aman Kumar Raut</h1>
+        <p>Frontend and Backend Developer & UI/UX Enthusiast</p>
+    </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+    <h2>About Me</h2>
+    <p>I am learning frontend development using HTML, CSS, and JavaScript.</p>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-box">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+    </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+    <h2>My Projects</h2>
+
+    <div id="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+            <h3>Weather App</h3>
+            <p>
+                A real-time weather application that fetches current weather
+                data using an API. It displays temperature, humidity, and
+                weather conditions based on user location.
+            </p>
+            <p><strong>Technologies:</strong> HTML, CSS, JavaScript, API</p>
+            <a href="#" class="project-btn">View Project</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+            <h3>Waste Management System</h3>
+            <p>
+                A web-based system designed to manage waste collection, track
+                waste categories, and improve waste management efficiency.
+            </p>
+            <p><strong>Technologies:</strong> PHP, MySQL, HTML, CSS</p>
+            <a href="#" class="project-btn">View Project</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+            <h3>Banking System</h3>
+            <p>
+                A simple banking system that allows users to create accounts,
+                deposit and withdraw money, and view transaction history.
+            </p>
+            <p><strong>Technologies:</strong> PHP, MySQL, JavaScript</p>
+            <a href="#" class="project-btn">View Project</a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+    <h2>Contact Me</h2>
+
+    <form id="contact-form-id">
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+        <button type="submit">Send</button>
+    </form>
+
+    <div id="form-message"></div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2025 My Portfolio</p>
+</footer>
+
+<!-- Link JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
