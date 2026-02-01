@@ -1,0 +1,84 @@
+
+CREATE DATABASE IF NOT EXISTS restaurant_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE restaurant_db_db;
+
+-- Users table for authentication
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- Categories table
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- Menu items table
+CREATE TABLE menu_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    is_available BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE,
+    INDEX idx_category (category_id),
+    INDEX idx_available (is_available)
+) ENGINE=InnoDB;
+
+-- Orders table
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    status ENUM('Pending', 'Confirmed', 'Preparing', 'Completed', 'Cancelled') DEFAULT 'Confirmed',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    INDEX idx_user (user_id),
+    INDEX idx_status (status)
+) ENGINE=InnoDB;
+
+-- Order items table
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    menu_item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10, 2) NOT NULL,
+    subtotal DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(id),
+    INDEX idx_order (order_id)
+) ENGINE=InnoDB;
+
+-- Insert sample categories
+INSERT INTO categories (name) VALUES 
+('Appetizers'),
+('Main Course'),
+('Desserts'),
+('Beverages'),
+('Salads');
+
+-- Insert sample menu items
+INSERT INTO menu_items (category_id, title, image, price, description) VALUES
+(1, 'Chicken Wings', 'https://images.unsplash.com/photo-1608039755401-742074f0548d?w=400', 8.99, 'Crispy buffalo wings with ranch dip'),
+(1, 'Mozzarella Sticks', 'https://images.unsplash.com/photo-1531749668029-2db88e4276c7?w=400', 6.99, 'Golden fried mozzarella with marinara sauce'),
+(2, 'Grilled Steak', 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400', 24.99, 'Premium ribeye steak with vegetables'),
+(2, 'Margherita Pizza', 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400', 14.99, 'Fresh tomato, mozzarella, and basil'),
+(2, 'Chicken Pasta', 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400', 16.99, 'Creamy alfredo pasta with grilled chicken'),
+(3, 'Chocolate Cake', 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400', 7.99, 'Rich chocolate layer cake'),
+(3, 'Ice Cream Sundae', 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400', 5.99, 'Vanilla ice cream with toppings'),
+(4, 'Fresh Lemonade','https://www.shutterstock.com/image-photo/fresh-lemonade-freshly-squeezed-lemon-260nw-325535942.jpg', 3.99,'Freshly squeezed lemonade'),
+(4, 'Iced Coffee', 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400', 4.99, 'Cold brew coffee with ice'),
+(5, 'Caesar Salad', 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400', 9.99, 'Romaine lettuce with caesar dressing')
+(5, 'Greek Salad', 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400', 10.99, 'Fresh tomatoes, cucumber, olives, feta cheese'),
+(1, 'Spring Rolls', 'https://images.unsplash.com/photo-1604909052743-94e838986d24?w=400', 7.49, 'Crispy vegetable spring rolls with sweet chili sauce'),
+(2, 'Butter Chicken', 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400', 18.99, 'Creamy tomato-based curry with tender chicken'),
+(4, 'Mango Smoothie', 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400', 5.49, 'Fresh mango blended with yogurt and ice'),
+(3, 'Cheesecake', 'https://images.unsplash.com/photo-1542826438-bd32f43d626f?w=400', 8.49, 'Classic baked cheesecake with creamy texture');
